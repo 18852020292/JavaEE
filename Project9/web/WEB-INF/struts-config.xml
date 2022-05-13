@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="loginForm" type="LoginForm"></form-bean>
+    </form-beans>
+    <global-exceptions />
+    <global-forwards>
+        <forward name="SUCCESS" path="/loginSuccess.jsp"></forward>
+        <forward name="FAIL" path="/loginFail.jsp"></forward>
+    </global-forwards>
+    <action-mappings>
+        <action path="/login" name="loginForm" type="LoginAction" ></action>
+    </action-mappings>
+    <message-resources parameter="ApplicationResources" />
+</struts-config>
