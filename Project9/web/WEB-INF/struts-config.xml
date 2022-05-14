@@ -6,15 +6,15 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="loginForm" type="LoginForm"></form-bean>
+        <form-bean name="loginForm" type="LoginForm"/>
     </form-beans>
     <global-exceptions />
     <global-forwards>
-        <forward name="SUCCESS" path="/loginSuccess.jsp"></forward>
-        <forward name="FAIL" path="/loginFail.jsp"></forward>
+        <forward name="SUCCESS" path="/loginSuccess.jsp"/>
+        <forward name="FAIL" path="/loginFail.jsp"/>
     </global-forwards>
     <action-mappings>
-        <action path="/login" name="loginForm" type="LoginAction" ></action>
+        <action path="/login" name="loginForm" type="LoginAction"/>
     </action-mappings>
     <message-resources parameter="ApplicationResources" />
 </struts-config>
