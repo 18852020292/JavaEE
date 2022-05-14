@@ -7,7 +7,7 @@ public class LoginForm extends ActionForm {
 	private String password;
 
 	public LoginForm() {
-		System.out.println("LoginFormæž„é€ å‡½æ•°");
+		System.out.println("LoginForm¹¹Ôìº¯Êý");
 	}
 
 	public String getAccount() {
