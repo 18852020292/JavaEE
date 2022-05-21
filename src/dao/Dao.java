@@ -78,12 +78,4 @@ public class Dao {
         return user;
     }
 
-    public static void main(String[] args) {
-        User user = null;
-        try {
-            user = queryUserByAccount("123");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
