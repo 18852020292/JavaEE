@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+/**
+ * @author 16844
+ */
 public class LoginAction extends Action {
     public LoginAction() {
         System.out.println("LoginAction构造函数");
