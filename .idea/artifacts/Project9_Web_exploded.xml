@@ -7,6 +7,7 @@
         <element id="directory" name="classes">
           <element id="javaee-facet-classes" facet="Project9/web/Web" />
           <element id="module-output" name="JavaEE" />
+          <element id="module-output" name="Project10" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$PROJECT_DIR$/Project9/web/WEB-INF/lib/commons-chain-1.2.jar" />
