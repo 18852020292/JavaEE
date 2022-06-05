@@ -1,21 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Tomcat 9.0.41" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-    <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Project10/login.jsp" />
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
-      <artifact name="Project8:Web exploded">
+      <artifact name="Project13:war exploded">
         <settings>
-          <option name="CONTEXT_PATH" value="/Project8" />
-        </settings>
-      </artifact>
-      <artifact name="Project9:Web exploded">
-        <settings>
-          <option name="CONTEXT_PATH" value="/Project9" />
-        </settings>
-      </artifact>
-      <artifact name="Project10:war exploded">
-        <settings>
-          <option name="CONTEXT_PATH" value="/Project10" />
+          <option name="CONTEXT_PATH" value="/Project13" />
         </settings>
       </artifact>
     </deployment>
@@ -93,9 +82,7 @@
     <method v="2">
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
-        <artifact name="Project8:Web exploded" />
-        <artifact name="Project9:Web exploded" />
-        <artifact name="Project10:war exploded" />
+        <artifact name="Project13:war exploded" />
       </option>
     </method>
   </configuration>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    <!--配置数据源，可以选择c3p0、druid等，这里直接使用spring的DataSource数据源-->
+    <!--也可以选择在hibernate.cfg.xml中配置数据源，在这里为了事务的方便管理，将数据源交给spring管理-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/project?useUnicode=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="1684468347"/>
+    </bean>
+
+    <!--hibernate的session工厂相关配置-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <!--指定数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置jdbc属性-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.autoReconnect">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+
+        <property name="configLocations">
+           <list>
+               <value>classpath:hibernate.cfg.xml</value>
+           </list>
+       </property>
+    </bean>
+
+    <!-- 事务管理 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- 模板，作为公用，调用是只需要加上parent属性指向这里，不然每个bean中都需要加上这些配置 -->
+    <bean id="transactionalTemplate" abstract="true"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <!-- 引入事务管理器 -->
+        <property name="transactionManager" ref="transactionManager"/>
+        <!-- 配置事务的传播属性 -->
+        <property name="transactionAttributes">
+            <props>
+                <!-- 事务管理的方法、方式 -->
+                <!-- 例如：add开头的方法 -->
+                <!-- <prop key="add*">PROPAGATION_REQUIRED</prop> -->
+                <!-- PROPAGATION_REQUIRED：如果存在一个事务，则支持当前事务。如果没有事务则开启。 -->
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- dao中注意，需要使用parent将相应的事务管理引入进来，因为每个dao都写一遍是不现实的，所以抽出公用 -->
+    <!-- 使用xml方式注入时，这里的dao不是用接口方式不行？ -->
+    <bean id="userDao" parent="transactionalTemplate">
+        <property name="target">
+            <bean class="dao.impl.UserDaoImpl">
+                <property name="sessionFactory" ref="sessionFactory"/>
+            </bean>
+        </property>
+    </bean>
+    
+
+    <!-- service中注意，需要使用property将相应的dao变量引入进来，否则注入为空 -->
+
+    <bean id="userService" class="service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+</beans>

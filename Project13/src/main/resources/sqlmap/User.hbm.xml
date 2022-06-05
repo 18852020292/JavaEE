@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entity.User" table="user">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" precision="10" scale="0"/>
+            <!--如果是oracle，则需要指定自增序列-->
+            <!--<generator class="sequence">-->
+            <!--    <param name="sequence">ZZ_SCHOOLS</param>-->
+            <!--</generator>-->
+        </id>
+        <property name="account" type="java.lang.String">
+            <column name="account" precision="5" scale="0"/>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

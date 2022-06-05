@@ -14,7 +14,7 @@
         <forward name="FAIL" path="/loginFail.jsp"/>
     </global-forwards>
     <action-mappings>
-        <action path="/login" name="loginForm" type="LoginAction"/>
+        <action path="/login" name="loginForm" type="action.LoginAction"/>
     </action-mappings>
     <message-resources parameter="ApplicationResources" />
 </struts-config>
