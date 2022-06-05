@@ -12,9 +12,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public List<User> list(String text) {
+        System.out.println(text);
         String hql = "from User ";
         if (null != text && !"".equals(text) && !"查询:请输入名称...".equals(text)) {
-            hql += "where name like '%" + text + "%' ";
+            hql += "where account like '%" + text + "%' ";
         }
         Query query = getSession().createQuery(hql);
         return query.list();

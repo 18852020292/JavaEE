@@ -30,7 +30,7 @@ public class UserController extends BaseController {
     }
 
     public String add() {
-        System.out.println(123);
+
         userService.add(user);
         return "refresh";
     }
