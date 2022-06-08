@@ -10,26 +10,6 @@
 	<span></span><br/>
 	
 	<a href="user_list.action">用户</a>
-	
-	<!-- 
-	<input type="button" value="test" onclick="test()" />
-	<script type="text/javascript">
-		function test() {
-			$.ajax({
-				type:'post',
-				//通配符方式
-				url:'student_list.action',
-				//指定method方式
-				//url:'test.action',
-				//DMI动态方法
-				//url:'wolffy!list.action',
-				success:function(data) {
-					//console.log(data);
-					alert("Hello,Welcome to here!");
-				}
-			});
-		}
-	</script> 
-	-->
+
 </body>
 </html>

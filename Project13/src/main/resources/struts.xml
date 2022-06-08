@@ -4,22 +4,12 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-    <!-- 打开DMI动态方法，2.3.15之前默认true，之后默认false -->
-    <!-- DMI用法: test!add.action -->
-    <!-- <constant name="struts.enable.DynamicMethodInvocation" value="true" /> -->
-
-    <!-- struts2的action必须放在一个指定的包空间下定义 -->
     <package name="default" extends="struts-default">
         <!-- 声明全局的返回结果 -->
         <global-results>
             <result name="fail">/error.jsp</result>
         </global-results>
 
-        <!-- 这里action标签需要放到最下面，不然会报错 -->
-        <!-- DMI动态方法：闪瞎双眼的时刻即将到来，在2.3.15之后已经默认为false关闭，需要自己手动打开，不然一个劲儿404，官方表明此种方法有漏洞，推荐使用通配符方式 -->
-
-        <!-- 通配符：官方推荐使用，如user_list，就是访问controller中的list方法 -->
-        <!-- {1}表示通配符的第一个，可以有多个，并且在result标签中也可以使用 -->
         <action name="user_*" class="controller.UserController" method="{1}">
             <!-- <result name="{1}">/{1}.jsp</result> -->
             <result name="list">/user_list.jsp</result>
